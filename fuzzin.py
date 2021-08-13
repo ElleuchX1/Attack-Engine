@@ -1,5 +1,4 @@
 from prompt1 import shell
-from main import *
 import requests
 prompt="- Available information Gathering Functionalities -"
 print("\33[92m"+prompt)

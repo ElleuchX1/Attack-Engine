@@ -1,0 +1,13 @@
+requests
+argparse
+requests
+re
+bane
+optparse
+validators
+socket
+logo
+os
+ssl
+cmsdetect
+re

@@ -1,0 +1,30 @@
+{
+    "Payload": "\"><script>alert(123)</script>",
+    "Page": "https://www.facebook.com/DjSasha.J.TECHNO.OF.ME/",
+    "Output": {
+        "0": {
+            "Form": "https://www.facebook.com/DjSasha.J.TECHNO.OF.ME/intl/save_locale/?loc=en_US&href=https%3A%2F%2Fm.facebook.com%2FDjSasha.J.TECHNO.OF.ME%2F&index=2&ls_ref=m_basic_locale_footer&ref_component=mbasic_footer&ref_page=%2Fwap%2Fpages_timeline.php&refid=17",
+            "Method": "post",
+            "Passed": [],
+            "Failed": []
+        },
+        "1": {
+            "Form": "https://www.facebook.com/DjSasha.J.TECHNO.OF.ME/intl/save_locale/?loc=pt_BR&href=https%3A%2F%2Fm.facebook.com%2FDjSasha.J.TECHNO.OF.ME%2F&index=4&ls_ref=m_basic_locale_footer&ref_component=mbasic_footer&ref_page=%2Fwap%2Fpages_timeline.php&refid=17",
+            "Method": "post",
+            "Passed": [],
+            "Failed": []
+        },
+        "2": {
+            "Form": "https://www.facebook.com/DjSasha.J.TECHNO.OF.ME/intl/save_locale/?loc=ar_AR&href=https%3A%2F%2Fm.facebook.com%2FDjSasha.J.TECHNO.OF.ME%2F&index=1&ls_ref=m_basic_locale_footer&ref_component=mbasic_footer&ref_page=%2Fwap%2Fpages_timeline.php&refid=17",
+            "Method": "post",
+            "Passed": [],
+            "Failed": []
+        },
+        "3": {
+            "Form": "https://www.facebook.com/DjSasha.J.TECHNO.OF.ME/intl/save_locale/?loc=es_LA&href=https%3A%2F%2Fm.facebook.com%2FDjSasha.J.TECHNO.OF.ME%2F&index=3&ls_ref=m_basic_locale_footer&ref_component=mbasic_footer&ref_page=%2Fwap%2Fpages_timeline.php&refid=17",
+            "Method": "post",
+            "Passed": [],
+            "Failed": []
+        }
+    }
+}
