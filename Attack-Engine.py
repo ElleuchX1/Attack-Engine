@@ -404,13 +404,11 @@ if C1 == 6 :
 	C2=misc()
 	if C2==1:
 		print(Login(IP))
-
-    if C2 ==2  :
-    	Ports = [i for i in range(60000)]
-    	PortScanner(IP,Ports)
-    if C2 == 3 :
-    	graby()
-
+	if C2 == 2  :
+		Ports = [i for i in range(60000)]
+		PortScanner(IP,Ports)
+	if C2 == 3 :
+		graby()
 
 
 
