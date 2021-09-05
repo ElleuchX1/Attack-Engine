@@ -10,7 +10,7 @@ LOGO="""
                                                             __/ |                
                                                            |___/                 
 
-- OFFENSIVE SECURITY TOOL // Optimized Version of Attack-Engine
+- OFFENSIVE SECURITY TOOL # 2020 - 2021
 """
 
 print('\33[92m'+LOGO)

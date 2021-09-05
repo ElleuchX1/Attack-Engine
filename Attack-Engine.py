@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+
+#####################
+# Stage 2020-2021   #
+# SUPCOM            #
+#####################
+
 ################# ARGUMENT PARSING ####################
 import argparse
 import requests
@@ -56,7 +62,7 @@ from phonemail import *
 from prompt1 import shell
 
 
-C1=shell(6,'~ ')
+C1=shell(7,'~ ')
 
 #######################INFORMATION GATHERING##############################
 
@@ -182,33 +188,34 @@ if C1 == 2:
 		code_status=input('\33[95m'+'-> Status code filters [Else leave empty]: ')
 
 
-		if C1==1:
+		if C2==1:
+			print('test')
 			ext=[".bak",".~",".swp",".tmp"]
 
 			if os.path.isfile('/usr/share/seclists/Discovery/Web-Content/raft-small-files.txt'):
-				file1 = open('myfile.txt', 'r')
+				file1 = open('/usr/share/seclists/Discovery/Web-Content/raft-small-files.txt', 'r')
 			else:
 				raise("Seclists not found! - apt install seclists ")
 			files = file1.readlines()
 			for name in files:
 				for backup in ext:
 					r=requests.get('http://{}/dir/'.format(args.IP))
-					if r.status_code in code_status:
-						print('\33[43m'+ 'File found! : ',name+backup)
+					if str(r.status_code) not in code_status:
+						print( 'File found! : ',name.strip('\n')+backup)
 			C2=fuzzing()
 
-		if C1==2:
+		if C2==2:
 
 			if os.path.isfile('/usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt'):
-				file1 = open('myfile.txt', 'r')
+				file1 = open('/usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt', 'r')
 			else:
 				raise("Seclists not found! - apt install seclists ")
 			files = file1.readlines()
 			for name in files:
 				
 				r=requests.get('http://{}/{}/'.format(args.IP,name))
-				if r.status_code in code_status:
-					print('\33[43m'+ 'File found! : ',name+backup)
+				if str(r.status_code) not in code_status:
+					print( 'Directory found! : ',name)
 			C2=fuzzing()
 
 
@@ -246,12 +253,7 @@ if C1== 3:
 			
 
 			
-	for x in a :
-		print(x)
-		try:
-			bane.xss(x , payload="<script>alert(123)</script>" , timeout=15 )
-		except:
-			pass
+	
 	from detectsqli import *
 	SQLi(IP)
 
@@ -268,6 +270,72 @@ if C1 == 5 :
 	else :
 		print('[+] CMS Detected : ',cms)
 	C1=shell(11,'~ ')
+
+
+
+############## Misc ##################
+def login(host):
+    try:
+        login_ftp=ftplib.FTP(host)
+        ftp.login('anonymous','')
+        
+        ftp.quit()
+        return '|+| Logged in as Anonymous'
+    except:
+        return '|-| Failed to login as Anonymous '
+
+
+
+def cScan(host,port):
+    try:
+        sock=socket(AF_INET,SOCK_STREAM)
+        sock.connect((host,port))
+        print('/+/ {}/TCP is OPENED'.format(port))
+    except:
+        print('/-/ {}/TCP is CLOSED'.format(port))
+    finally:
+        sock.close()
+def PortScanner(host,ports):
+    try:
+        ipFromDNS=gethostbyname(host)
+    except:
+        print('Failed to resolve {}'.format(host))
+    try:
+        NameFromIP= gethostbyaddr(ipFromDNS)
+        print('/+/ Results For: {}'.format(NameFromIP[0]))     
+    except:
+        print('/+/ Results for: {}'.format(ipFromDNS))
+    setdefaulttimeout(1)
+
+    for port in ports :
+        thr=Thread(target=cScan, args=(host,int(port)))
+        thr.start()
+
+
+
+def retrieveBanner(host,port):
+    try:
+        socket.setdefaulttimeout(0)
+        sock=socket.socket()
+        sock.connect((host,port))
+        banner=sock.recv(1024)
+        return banner
+    except:
+        return
+def graby():
+    host =input("|+| Please ENTER your TARGET IP! : ")
+    for port in range(1,500): 
+        banner= retrieveBanner(host,port)
+    
+        if banner:
+            print("|+| {}:{} : {}".format(host,port,banner))
+        
+        else:
+            print("Sorry, No banner was detected in {} at port {}".format(host,port))
+
+
+
+
 
 
 
@@ -350,9 +418,3 @@ if C1 == 6 :
 
 
 
-
-
-
-
-	
-	
