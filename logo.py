@@ -1,4 +1,4 @@
-
+ 
 
 LOGO="""
   ___   _    _                 _             _____                _              
@@ -13,15 +13,32 @@ LOGO="""
 - OFFENSIVE SECURITY TOOL # 2020 - 2021
 """
 
-print('\33[92m'+LOGO)
-print('\n')
-print("\t"+"[1] Information Gathering"+"\33[92m")
-print("\t"+"\33[92m"+"[2] Fuzzing "+"\33[92m")
-print("\t"+"\33[92m"+"[3] Checking for Vulnerabilies"+"\33[92m")
-print("\t"+"\33[92m"+"[4] Exploiting Vulnerabilies"+"\33[92m")
-print("\t"+"\33[92m"+"[5] CMS Checking"+"\33[92m")
-print("\t"+"\33[92m"+"[6] Miscellaneous"+"\33[92m")
 
 
+from rich.tree import Tree
+import time
+from rich import print
+from rich.console import Console
+import os 
+
+import logging
+from rich.logging import RichHandler
 
 
+log = logging.getLogger("rich")
+clear = lambda: os.system('clear')
+console = Console()
+clear()
+console.print(LOGO)
+console.print('\n')
+console.print("\t"+"[1] Information Gathering")
+console.print("\t"+"[2] Fuzzing ")
+console.print("\t"+"[3] Checking for Vulnerabilies")
+console.print("\t"+"[4] Exploiting Vulnerabilies")
+console.print("\t"+"[5] CMS Checking")
+console.print("\t"+"[6] Miscellaneous")
+console.print("\n\tWRONG INPUT !!! TRY AGAIN .", style="red bold blink2")
+time.sleep(10)
+clear()
+console.print(LOGO)
+console.print('\n')

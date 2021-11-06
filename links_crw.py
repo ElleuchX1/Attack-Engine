@@ -14,7 +14,7 @@ def is_valid(url):
 def get_all_website_links(url):
     urls = set()
     domain_name = urlparse(url).netloc
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    soup = BeautifulSoup(requests.get(url).content, "html.parser" )
     for a_tag in soup.findAll("a"):
         href = a_tag.attrs.get("href")
         if href == "" or href is None:
@@ -35,7 +35,7 @@ def get_all_website_links(url):
     return urls
 total_urls_visited = 0
 
-def crawl(url, max_urls=30):
+def crawl(url, max_urls=10):
     global total_urls_visited
     total_urls_visited += 1
     links = get_all_website_links(url)
@@ -44,7 +44,7 @@ def crawl(url, max_urls=30):
             break
         crawl(link, max_urls=max_urls)
 
-def linkcrawl(url):
-	crawl(url)
+def linkcrawl(url , max_urls=10):
+	crawl(url , max_urls)
 	T=(internal_urls,external_urls)
 	return T
