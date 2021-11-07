@@ -1,6 +1,9 @@
 import requests
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
+import concurrent.futures
+
+
 
 
 internal_urls = set()
@@ -39,10 +42,10 @@ def crawl(url, max_urls=10):
     global total_urls_visited
     total_urls_visited += 1
     links = get_all_website_links(url)
-    for link in links:
-        if total_urls_visited > max_urls:
-            break
-        crawl(link, max_urls=max_urls)
+    if total_urls_visited > max_urls:
+        return None
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(crawl, links)
 
 def linkcrawl(url , max_urls=10):
 	crawl(url , max_urls)
