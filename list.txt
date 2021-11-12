@@ -1,6 +1,0 @@
-blabla
-contact-us
-dazed
-/index.php/contact-us
-
-/usr/share/wordlists/dirb/small.txt
