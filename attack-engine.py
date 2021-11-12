@@ -75,12 +75,12 @@ class attack () :
 			self.console.print("\t"+i)
 		if error : 
 				self.console.print("\n\tWRONG INPUT !!! TRY AGAIN .", style="red bold blink2")
-		self.console.print("~/"+dir+"> " , end='' ,style="#8500ff")
+		self.console.print("[#8500ff]~/ "+dir+"> [/#8500ff]" , end='')
 		return input()
 
 	def main (self) :
 		error=False
-		Menu = ["[1] Information Gathering" , "[2] Fuzzing" ,"[3] Checking for Vulnerabilies" , "[4] Exploiting Vulnerabilies" , "[5] CMS Checking" , "[6] Miscellaneous" , "[7] Explore Findings" ,"[8] Exit " ] 
+		Menu = ["[1] Information Gathering" , "[2] Fuzzing" ,"[red][3] Checking for Vulnerabilies[/red]" , "[red][4] Exploiting Vulnerabilies[/red]" , "[5] CMS Checking" , "[6] Miscellaneous" , "[7] Explore Findings" ,"[8] Exit " ] 
 		while(True) :
 			C=self.menu( Menu , error)
 			error=False
@@ -101,7 +101,8 @@ class attack () :
 				print("\n")
 				self.console.print(json.dumps(self.target, skipkeys = True, allow_nan = True, indent = 6))
 				self.console.print("Do you want to save as a json file ? [Y/N] :" ,end="", style = "red" )
-				if input()[0].upper()=='Y' :
+				Input=input()
+				if  Input!=''  and Input[0].upper()=='Y' :
 					self.logo()
 					self.console.print("Custom Path [Else leave empty]:" , end="" , style="red")
 					Input=input()
@@ -109,7 +110,7 @@ class attack () :
 					f.write(json.dumps(self.target, skipkeys = True, allow_nan = True, indent = 6))
 					f.close()
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='8' :
 				exit()
@@ -130,7 +131,7 @@ class attack () :
 					self.target["Geo IP"]={x.split(':')[0].strip():x.split(':')[1].strip() for x in r.text.split("\n") }
 				self.console.print(r.text)
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='2' :
 				self.logo(True)
@@ -139,7 +140,7 @@ class attack () :
 					r=requests.get('http://api.hackertarget.com/pagelinks/?q={}'.format(self.target["IP"]))
 				self.console.print(r.text)
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='3' :
 				self.logo(True)
@@ -148,7 +149,7 @@ class attack () :
 					r=requests.get('http://api.hackertarget.com/httpheaders/?q={}'.format(self.target["IP"]))
 				self.console.print(r.text)
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='4' :
 				self.logo(True)
@@ -157,7 +158,7 @@ class attack () :
 					r=requests.get('http://api.hackertarget.com/hostsearch/?q={}'.format(self.target["IP"]))
 				self.console.print(r.text)
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='5' :
 				self.logo(True)
@@ -166,7 +167,7 @@ class attack () :
 					r=requests.get('http://api.hackertarget.com/reversedns/?q={}'.format(self.target["IP"]))
 				self.console.print(r.text)
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='6' :
 				self.logo(True)
@@ -175,7 +176,7 @@ class attack () :
 					r=requests.get('http://api.hackertarget.com/findshareddns/?q={}'.format(self.target["IP"]))
 				self.console.print(r.text)
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='7' :
 				try :
@@ -183,7 +184,7 @@ class attack () :
 				except Exception :
 					self.console.print('Can\'t find SSL Certificate' , style="red blink2")
 					self.console.print('\n')
-					self.console.print("Press any key to continue ..." , style = "red" )
+					self.console.print("Press [ENTER] to continue ..." , style = "red" )
 					input()
 ###################
 
@@ -193,7 +194,7 @@ class attack () :
 				if "internal_urls" not in self.target :
 					self.console.print("The Links Crawler Need To Be Executied Before This Option" , style="red bold")
 					print('\n')
-					self.console.print("Press any key to continue ..." , style = "red" )
+					self.console.print("Press [ENTER] to continue ..." , style = "red" )
 					input()
 					self.crw()
 				self.logo()
@@ -205,7 +206,7 @@ class attack () :
 				self.target["emails"]=list(set([email for sublist in emails for email in sublist]))
 				print(self.target["emails"])
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='9' :
 				self.logo()
@@ -213,7 +214,7 @@ class attack () :
 				if "internal_urls" not in self.target :
 					self.console.print("The Links Crawler Need To Be Executied Before This Option" , style="red bold")
 					print('\n')
-					self.console.print("Press any key to continue ..." , style = "red" )
+					self.console.print("Press [ENTER] to continue ..." , style = "red" )
 					input()
 					self.crw()
 				self.logo()
@@ -225,7 +226,7 @@ class attack () :
 				self.target["Phone Numbers"]=list(set([Phone_Number for sublist in Phone_Numbers for email in sublist]))
 				print(self.target["Phone Numbers"])
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='10' :
 				self.crw()
@@ -254,7 +255,7 @@ class attack () :
 				for i in links[1] :	
 					self.console.print(i,style="blue")
 				print('\n')
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 	
 
@@ -280,7 +281,7 @@ class attack () :
 		self.console.print('[blue]Serial Number:[/blue] {}'.format(cert['serialNumber']))
 		self.console.print('[blue]Version:[/blue] {}'.format(cert['version']))
 		self.console.print('\n')
-		self.console.print("Press any key to continue ..." , style = "red" )
+		self.console.print("Press [ENTER] to continue ..." , style = "red" )
 		input()
 ################################     Fuzzing     ###################################
 	def  FUZZ(self) :
@@ -308,7 +309,7 @@ class attack () :
 						found=executor.map(self.fuzzer, files)
 				self.logo()
 				self.console.print({ i:(j,x) for i,j,x in found	 if i!=None})
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 
 			elif C=='2' :
@@ -333,7 +334,7 @@ class attack () :
 					input()
 				self.logo()
 				self.console.print({ i:(j,x) for i,j,x in found	 if i!=None})
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 
 			elif C=='3' :
@@ -361,7 +362,7 @@ class attack () :
 						found=executor.map(self.fuzzer, files)
 				self.logo()
 				self.console.print({ i:(j,x) for i,j,x in found	 if i!=None})
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='4' :
 				self.logo()
@@ -377,7 +378,7 @@ class attack () :
 				input()
 				self.logo()
 				self.console.print({ i:(j,x) for i,j,x in found	 if i!=None})
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 			elif C=='5' :
 				return
 			else :
@@ -405,7 +406,7 @@ class attack () :
 			self.console.print('\t CMS Detection failed'  ,style="#ff0000 bold blink2" )
 		else :
 			self.console.print('\t CMS Detected : ',cms ,style="#00ff00 bold " )
-		self.console.print("Press any key to continue ..." , style = "red" )
+		self.console.print("Press [ENTER] to continue ..." , style = "red" )
 		input()
 ################################     Miscellaneous     ##############################
 
@@ -420,7 +421,7 @@ class attack () :
 				print("\n")
 				with self.console.status("[bold green]Working on it ..." , spinner="dots12" ) as status:
 						self.FTPlogin()
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='2' :
 				self.logo()
@@ -428,14 +429,14 @@ class attack () :
 				self.console.print("Input Ports Range [Default=1000] :" , end="")
 				Input=input()
 				self.PortScanner([ i for i in range(int(Input) if re.fullmatch("[0-9]+",Input) else 1000) ])	
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='3' :
 				self.logo()
 				print("\n")
 				if "Open Ports" not in self.target :
 					self.console.print("The Ports Scanner Need To Be Executied Before This Option" , style="red bold")
-					self.console.print("Press any key to continue ..." , style = "red" )
+					self.console.print("Press [ENTER] to continue ..." , style = "red" )
 					input()					
 					self.logo()
 					print("\n")
@@ -448,7 +449,7 @@ class attack () :
 					self.graby()
 				else :
 					self.console.print("No Open Ports Found " , style="red blink2")
-				self.console.print("Press any key to continue ..." , style = "red" )
+				self.console.print("Press [ENTER] to continue ..." , style = "red" )
 				input()
 			elif C=='4' :
 				return
