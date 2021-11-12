@@ -1,0 +1,5 @@
+rich
+validators
+requests
+bs4
+
